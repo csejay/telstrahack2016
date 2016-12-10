@@ -43,10 +43,14 @@
       console.log(safetyInfo)
       // append country title before (#message0)
       $('#message0').html(
-        '<h3>' +
+        '<h2>' +
           country.name +
-          '    <img width="50" src="images/flag_vietnam.png" alt="">' +
-        '</h3>'
+          '    <img width="50" align="right" src="images/flag_vietnam.png" alt="">' +
+        '</h2>'
+        /*
+        '<p>' +
+          '<b>' + country.advisoryText + '</b>' +
+        '</p>' */
       )
 
       // for loop, append after ("#message0")
@@ -75,7 +79,14 @@
 
       // advisory info
       $('#message0').after(
+
         '<div class="panel panel-warning">' +
+          '<div class="panel-heading">' +
+            '<h4 class="panel-title"><b>' + country.advisoryText + '</b></h4>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="panel panel-default">' +
           '<div class="panel-heading">' +
             '<h3 class="panel-title">Advisories</h3>' +
           '</div>' +
@@ -84,7 +95,7 @@
           '</div>' +
         '</div>'
       )
-      console.log(country.advisories.description)
+      console.log(country.advisories)
     }
     </script>
   </body>
