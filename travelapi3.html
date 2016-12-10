@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="message"></div>
+    </div>
+    <button onClick="callCountry()">Call Country API</button>
+
+    <script>
+    var country = "initial value"
+    var safetyInfo = ''
+    var callCountry = function(){
+      $.ajax({
+      	type: 'GET',
+      	crossDomain: true,
+      	dataType : "json",
+        headers: { "X-Auth-API-Key": "ckguvyq63hyy79aruyvcnybb" },
+        url: "https://api.tugo.com/v1/travelsafe/countries/VN",
+      	success: function (data) {
+          console.log('Success GET: country')
+      		console.log(data);
+          country = data
+          safetyInfo = country.safety.safetyInfo
+          displayCall()
+      	}
+      });
+    }
+    var displayCall = function(){
+      // empty ('#message')
+      $('#message').empty()
+      console.log('empty called')
+      // set ('#message') with initial div, id=#message0
+      $('#message').html('<div id="message0"></div>')
+      console.log('initial fill')
+      console.log(safetyInfo)
+      // for loop, append after ("#message0")
+      for(var i=0; i<safetyInfo.length;i++){
+        // create new element 'message[i]''
+        var prevMessage = 'message' + i
+        var curMessage = 'message' + (i + 1)
+        $('#' + prevMessage).after('<div id=' + curMessage + '></div>')
+        // embed element 'name[i]'
+        var curMessageNameId = 'name' + i
+        var curMessageName = '<div id=' + curMessageNameId + '>' + safetyInfo[i].category +'</div>'
+        $('#' + curMessage).html(curMessageName)
+        // embed element 'info[i]'
+        var curMessageInfoId = 'info' + i
+        var curMessageInfo = '<div id=' + curMessageInfoId + '>' + safetyInfo[i].description + '</div>'
+        $('#' + curMessageNameId).after(curMessageInfo)
+        $('#' + curMessageInfoId).after('<br>')
+        console.log(i)
+        console.log(safetyInfo[i])
+      }
+    }
+    </script>
+  </body>
+</html>
