@@ -4,12 +4,14 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
   </head>
   <body>
-    <div id="message"></div>
+    <div class="container-fluid">
+      <div id="message"></div>
+    </div>
     <button onClick="callCountry()">Call Country API</button>
-
 
     <script>
     var country = "initial value"
@@ -30,10 +32,7 @@
       	}
       });
     }
-
-
     var displayCall = function(){
-
       // empty ('#message')
       $('#message').empty()
       console.log('empty called')
@@ -61,6 +60,5 @@
       }
     }
     </script>
-
   </body>
 </html>
