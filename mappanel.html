@@ -12,21 +12,88 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4">
-          <div class="panel-group">
-            <div class="panel">
+        <div class="col-md-4" style="background-color:blue">
+          <!-- Map side panel -->
+          <div class="panel list-group">
+            <div class="list-group-item">
               <div class="panel-heading">
-                <h3 class="panel-title">Markers</h3>
-              </div>
-              <div class="panel-body">
-                <!-- Marker panel group -->
-                
+                <h3 class="panel-title">Settings</h3>
               </div>
             </div>
+            <div class="list-group-item">
+              <div class="panel-body">
+                <!-- Map markers panel -->
+                <div class="panel list-group">
+                  <div class="list-group-item">
+                    <div class="panel-heading">
+                      <div class="panel list-group">
+                        <a class="list-group-item" data-toggle="collapse" data-target="#sublinks">Test</a>
+                        <div class="sublinks collapse">
+                          <a class="list-group-item" data-toggle="collapse" data-target="sublinks_markersPanel">Markers Panel</a>
+                          <div id="sublinks_markersPanel" class="sublinks collapse">
+                            <a class="list-group-item small"><span>
+                              <!--list of markers-->
+                              <div id="markerList" class="panel list-group">
+                                <a class="list-group-item" data-toggle="collapse" data-target="#sublinks_markerList">Test</a>
+                                <div id="sublinks_markerList" class="sublinks collapse">
+                                  <a class="list-group-item small"><span></span></a>
+                                </div>
+                              </div>
+                          <span></a>
+                        </div>
+
+                      </div><!--.panel-body-->
+                    </div>
+                  </div>
+                </div><!--.panel-body-->
+              </div>
+            </div><!--.panel-group-->
         </div>
       </div>
     </div>
     <script>
+      var arrCoords = [{
+          "lat": 10.709797114802402,
+          "lon": 105.33215562691426,
+          "time": "2016-12-08T15:41:35.412Z"
+        }, {
+          "lat": 10.29651382767102,
+          "lon": 105.73727286453364,
+          "time": "2016-12-07T11:41:35.412Z"
+        }, {
+          "lat": 10.584736614037618,
+          "lon": 105.78181966390942,
+          "time": "2016-12-06T07:41:35.412Z"
+        }, {
+          "lat": 10.358069865773288,
+          "lon": 105.46792962756278,
+          "time": "2016-12-05T03:41:35.412Z"
+        }, {
+          "lat": 10.614101128457742,
+          "lon": 105.92195711504108,
+          "time": "2016-12-04T23:41:35.412Z"
+        }, {
+          "lat": 10.89422964626165,
+          "lon": 106.1795883479868,
+          "time": "2016-12-03T19:41:35.412Z"
+        }, {
+          "lat": 10.788037247049667,
+          "lon": 106.59048386984685,
+          "time": "2016-12-02T15:41:35.412Z"
+        }, {
+          "lat": 11.151025342183182,
+          "lon": 106.36867638314023,
+          "time": "2016-12-01T11:41:35.412Z"
+        }]
+
+        $('#markerList').html(
+
+
+
+
+        )
+
+
 
     </script>
   </body>
