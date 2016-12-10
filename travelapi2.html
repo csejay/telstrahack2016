@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- React.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="message"></div>
+    <button onClick="callCountry()">Call Country API</button>
+
+    <script type="text/babel">
+    var Country = React.createClass({
+      render: function() {
+        return (
+          <p>
+            Data: {this.props.country}
+          </p>
+        );
+      }
+    });
+
+    var SafetyInfo = React.createClass({
+      render: function() {
+        var temp
+        for(var i=0; i<this.props.safetyInfo; i++){
+           temp = (
+            <p>
+              Data: {this.props.safetyInfo[i]}
+            </p>
+          );
+        }
+      }
+    });
+
+    setInterval(function(){
+      if(boolUpdate === true){
+        var safetyInfo = country.safety.safetyInfo
+        console.log("country")
+        console.log(country)
+        console.log("safetyInfo")
+        console.log(safetyInfo)
+        /*
+        country = JSON.stringify(country)
+        ReactDOM.render(
+          <Country country={country} />,
+          document.getElementById('message')
+        ); */
+        ReactDOM.render(
+          <SafetyInfo safetyInfo={safetyInfo} />,
+          document.getElementById('message')
+        );
+        boolUpdate = false;
+      }
+    }, 1000);
+
+
+
+    </script>
+
+    <script>
+    var boolUpdate = false;
+    var country = "initial value"
+    $.ajax({
+    	type: 'GET',
+    	crossDomain: true,
+    	dataType : "json",
+      headers: { "X-Auth-API-Key": "ckguvyq63hyy79aruyvcnybb" },
+      url: "https://api.tugo.com/v1/travelsafe/countries",
+    	success: function (data) {
+        console.log('Success GET: travelsafe')
+    		console.log(data);
+    	}
+    });
+    var callCountry = function(){
+      $.ajax({
+      	type: 'GET',
+      	crossDomain: true,
+      	dataType : "json",
+        headers: { "X-Auth-API-Key": "ckguvyq63hyy79aruyvcnybb" },
+        url: "https://api.tugo.com/v1/travelsafe/countries/VN",
+      	success: function (data) {
+          console.log('Success GET: country')
+      		console.log(data);
+          country = data
+          boolUpdate = true
+      	}
+      });
+    }
+
+
+    var displayCall = function(){
+      
+    }
+    </script>
+
+  </body>
+</html>

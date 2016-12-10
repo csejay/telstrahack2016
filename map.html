@@ -28,15 +28,21 @@
       <img src="images/xavier.png">
       <p>Hmmm.. I should have checked in 5 hours ago.</p>
     </div>
-    <div id="mapid"></div>
+    <div class="row">
+      <div class="col-md-8">
+        <div id="mapid"></div>
+      </div>
+      <div class="col-md-4"></div>
+      <div
+    </div>
 
     <!-- Scripts -->
       <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
       <script type="text/javascript">
         var lastKnown = [11.05, 105.09];
         var mymap = L.map('mapid').setView(lastKnown, 7);
-        document.getElementById('mapid').style.width = window.innerWidth + 'px';
-        document.getElementById('mapid').style.height = window.innerHeight + 'px';
+        //document.getElementById('mapid').style.width = window.innerWidth + 'px';
+        //document.getElementById('mapid').style.height = window.innerHeight + 'px';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '',
           maxZoom: 18,
