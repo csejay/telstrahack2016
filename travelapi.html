@@ -42,19 +42,13 @@
       console.log('initial fill')
       console.log(safetyInfo)
       // append country title before (#message0)
-      /*
       $('#message0').html(
-        '<div class="panel-group">' +
-          '<div class="panel panel-default">' +
-            '<div class="panel-heading">' +
-              '<h4 class="panel-title">' +
-                country.name +
-              '</h4>' +
-            '</div>' +
-          '</div>' +
-        '</div>'
-      )*/
-      $('#message0').html('<h1>' + country.name + '</h1><br>')
+        '<h3>' +
+          country.name +
+          '    <img width="50" src="images/flag_vietnam.png" alt="">' +
+        '</h3>'
+      )
+
       // for loop, append after ("#message0")
       for(var i=0; i<safetyInfo.length - 1;i++){
         // create new element 'message[i]''
@@ -75,11 +69,22 @@
               '</div>' +
             '</div>'
         )
-
-
         console.log(i)
         console.log(safetyInfo[i])
       }
+
+      // advisory info
+      $('#message0').after(
+        '<div class="panel panel-warning">' +
+          '<div class="panel-heading">' +
+            '<h3 class="panel-title">Advisories</h3>' +
+          '</div>' +
+          '<div class="panel-body">' +
+            country.advisories.description +
+          '</div>' +
+        '</div>'
+      )
+      console.log(country.advisories.description)
     }
     </script>
   </body>
