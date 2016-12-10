@@ -41,8 +41,22 @@
       $('#message').html('<div id="message0"></div>')
       console.log('initial fill')
       console.log(safetyInfo)
+      // append country title before (#message0)
+      /*
+      $('#message0').html(
+        '<div class="panel-group">' +
+          '<div class="panel panel-default">' +
+            '<div class="panel-heading">' +
+              '<h4 class="panel-title">' +
+                country.name +
+              '</h4>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )*/
+      $('#message0').html('<h1>' + country.name + '</h1><br>')
       // for loop, append after ("#message0")
-      for(var i=0; i<safetyInfo.length;i++){
+      for(var i=0; i<safetyInfo.length - 1;i++){
         // create new element 'message[i]''
         var prevMessage = 'message' + i
         var curMessage = 'message' + (i + 1)
@@ -54,7 +68,7 @@
             '<div class="panel panel-default">' +
               '<div class="panel-heading">' +
                 '<h4 class="panel-title">' +
-                  '<a data-toggle="collapse" href="#collapse' + i + '">' +
+                  '<a data-toggle="collapse" data-parent="#message" href="#collapse' + i + '">' +
                     safetyInfo[i].category +
                   '</a>' +
                 '</h4>' +
