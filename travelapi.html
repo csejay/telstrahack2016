@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div id="message"></div>
+      <div id="message" class="panel-group"></div>
     </div>
     <button onClick="callCountry()">Call Country API</button>
 
@@ -60,26 +60,20 @@
         // create new element 'message[i]''
         var prevMessage = 'message' + i
         var curMessage = 'message' + (i + 1)
-        $('#' + prevMessage).after('<div id=' + curMessage + '></div>')
+        $('#' + prevMessage).after('<div id="' + curMessage + '" class="panel panel-default"></div>')
 
 
         $('#' + curMessage).html(
-          '<div class="panel-group">' +
-            '<div class="panel panel-default">' +
-              '<div class="panel-heading">' +
-                '<h4 class="panel-title">' +
-                  '<a data-toggle="collapse" data-parent="#message" href="#collapse' + i + '">' +
-                    safetyInfo[i].category +
-                  '</a>' +
-                '</h4>' +
-              '</div>' +
-              '<div id="collapse' + i + '" class="panel-collapse collapse">' +
-                '<div class="panel-body">' +
-                  safetyInfo[i].description +
-                '</div>' +
-              '</div>' +
+            '<div class="panel-heading">' +
+              '<h4 data-toggle="collapse" data-parent="#message" data-target="#collapse' + i +'" class="panel-title">' +
+                safetyInfo[i].category +
+              '</h4>' +
             '</div>' +
-          '</div'
+            '<div id="collapse' + i + '" class="panel-collapse collapse">' +
+              '<div class="panel-body">' +
+                safetyInfo[i].description +
+              '</div>' +
+            '</div>'
         )
 
 
